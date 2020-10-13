@@ -52,9 +52,22 @@ class App extends Component {
 					<h3>Step 1</h3>
 					<div className="row">
 						<div className="col-sm-6">
-							<Input label='First Name' name='firstName' onChange={this.handleInputChange} value={this.state.firstName} /></div>
+							<div class="input-group">
+								<span class="input-group-addon" id="firstNameLabel">First Name</span>
+								<input name='firstName' type="text" class="form-control"
+									placeholder="First Name" aria-describedby="firstNameLabel"
+									onChange={this.handleInputChange} value={this.state.firstName}
+								/>
+							</div>
+						</div>
 						<div className="col-sm-6">
-							<Input label='Last Name' name='lastName' onChange={this.handleInputChange} value={this.state.lastName} />
+							<div class="input-group">
+								<span class="input-group-addon" id="lastNameLabel">Last Name</span>
+								<input name='lastName' type="text" class="form-control"
+									placeholder="Last Name" aria-describedby="lastNameLabel"
+									onChange={this.handleInputChange} value={this.state.lastName}
+								/>
+							</div>
 						</div>
 					</div>
 					<br />
@@ -66,38 +79,44 @@ class App extends Component {
 
 				{/* Step 3 */}
 				<Step title='Actions' style={{ textAlign: 'center' }}>
-					<Table basic='very' celled>
-						<Table.Body>
-							<Table.Row>
-								<Table.Cell>Name</Table.Cell>
-								<Table.Cell>
+					<table class='table'>
+						<tbody>
+							<tr>
+								<td>Name</td>
+								<td>
 									John Doe
-								</Table.Cell>
-							</Table.Row>
-							<Table.Row>
-								<Table.Cell>Date</Table.Cell>
-								<Table.Cell>
+								</td>
+							</tr>
+							<tr>
+								<td>Date</td>
+								<td>
 									10/28/2020 at 12:30pm
-								</Table.Cell>
-							</Table.Row>
-							<Table.Row>
-								<Table.Cell>Type</Table.Cell>
-								<Table.Cell>
+								</td>
+							</tr>
+							<tr>
+								<td>Type</td>
+								<td>
 									iPad, Appointment
-								</Table.Cell>
-							</Table.Row>
-						</Table.Body>
-					</Table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 					<Footer>
-						<Button onClick={e => Steps.previous(e)}>Back</Button>
-						<Button primary onClick={e => Steps.next(e)}>Next (semantic)</Button>
+						<button type='button' className='btn' onClick={e => Steps.previous(e)}>Back</button>
+						<button type='button' className='btn btn-primary' onClick={e => Steps.next(e)}>Next (semantic)</button>
 					</Footer>
 				</Step>
 
 				{/* Step 4 */}
 				<Step title='Address'>
 					<h3>Step 3</h3>
-					<Input label='Address' name='address1' onChange={this.handleInputChange} value={this.state.address1} />
+					<div class="input-group">
+						<span class="input-group-addon" id="addressLabel">Address</span>
+						<input name='address1' type="text" class="form-control"
+							placeholder="Address" aria-describedby="addressLabel"
+							onChange={this.handleInputChange} value={this.state.address1}
+						/>
+					</div>
 					<Footer>
 						<button className="btn" type='button' onClick={e => Steps.previous(e)}>Back</button>
 						<button className="btn btn-primary" type='button' onClick={e => Steps.next(e)}>Next In Footer</button>
@@ -149,8 +168,8 @@ class App extends Component {
 							<br />
 						</div>
 						<Footer >
-							<Button negative onClick={this.closeModal2} >Close</Button>
-							<Button positive onClick={this.closeModal2} >Thanks</Button>
+							<button className='btn btn-danger' onClick={this.closeModal2} >Close</button>
+							<button className='btn btn-primary' onClick={this.closeModal2} >Thanks</button>
 						</Footer>
 					</Modalfly>
 
