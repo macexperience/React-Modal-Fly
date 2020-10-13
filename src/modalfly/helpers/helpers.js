@@ -11,15 +11,15 @@ export function isFunction(functionToCheck) {
 
 
 export function getModalStyles(props) {
-    let mfStyle = mfDefaultStyle;
+    let mfStyle = styles.mfDefaultStyle;
     if (props.size === 'small') {
-        mfStyle = {...mfStyle, ...mfSmallStyle};
+        mfStyle = {...mfStyle, ...styles.mfSmallStyle};
     } else if (props.size === 'medium') {
-        mfStyle = {...mfStyle, ...mfMediumStyle};
+        mfStyle = {...mfStyle, ...styles.mfMediumStyle};
     } else if (props.size === 'large') {
-        mfStyle = {...mfStyle, ...mfLargeStyle};
+        mfStyle = {...mfStyle, ...styles.mfLargeStyle};
     } else if (props.size === 'extraLarge') {
-        mfStyle = {...mfStyle, ...mfXLStyle};
+        mfStyle = {...mfStyle, ...styles.mfXLStyle};
     }
     return mfStyle;
 }
