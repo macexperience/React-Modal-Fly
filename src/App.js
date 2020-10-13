@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ModalflyContainer, Modalfly, Steps, Step, Footer } from './modalfly/index';
-import { Input, Table, Button } from 'semantic-ui-react';
 
 class App extends Component {
 	constructor() {
