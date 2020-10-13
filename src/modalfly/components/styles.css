@@ -24,9 +24,9 @@
     opacity: 0;
 }
 
-div#modalfly-container {
+/* div#modalfly-container {
     z-index: 1000;
-}
+} */
 
 div.mf-wrapper {
     /* Set position */

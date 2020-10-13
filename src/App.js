@@ -14,7 +14,6 @@ class App extends Component {
 		};
 	}
 	handleShowClick = e => {
-		// console.log('e.target.name:', e.target.name)
 		if (e.target.name === 'btn1') {
 			this.setState(prevState => ({ showModal1: !prevState.showModal1 }));
 		} else if (e.target.name == 'btn2') {
@@ -40,8 +39,8 @@ class App extends Component {
 			<Steps>
 				{/* Step 1 */}
 				<Step title='First Step'>
-					<h3>Step Component</h3>
-					<p>Some content</p>
+					<h3>Step 1</h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptate dignissimos beatae, architecto, unde vero provident facilis recusandae laborum quam eligendi. Error at placeat eveniet labore blanditiis beatae, maiores adipisci.</p>
 					<Footer>
 						<button className="btn btn-primary" type='button' onClick={e => Steps.next(e)}>Next</button>
 					</Footer>
@@ -49,7 +48,7 @@ class App extends Component {
 
 				{/* Step 2 */}
 				<Step title='Contact Info'>
-					<h3>Step 1</h3>
+					<h3>Step 2</h3>
 					<div className="row">
 						<div className="col-sm-6">
 							<div class="input-group">
@@ -160,12 +159,6 @@ class App extends Component {
 								iusto labore repellendus error, doloremque assumenda ab sit voluptate quasi expedita rem modi
 								tempore voluptatum consequuntur debitis officiis? Voluptas, sit!
 							</p>
-							<br />
-							<br />
-							<br />
-							<br />
-							<br />
-							<br />
 						</div>
 						<Footer >
 							<button className='btn btn-danger' onClick={this.closeModal2} >Close</button>
