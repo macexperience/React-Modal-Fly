@@ -7,7 +7,33 @@ import StepContext from '../hooks/StepContext';
 import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { isFunction } from '../helpers/helpers'
+import { isFunction, getModalStyles } from '../helpers/helpers'
+
+// const mfDefaultStyle = {
+//     position: 'fixed',
+//     top: '40%',
+//     left: '50%',
+//     transform: 'translate(-50%, -50%)',
+//     borderRadius: '5px',
+//     boxShadow: '0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.11)',
+//     width: '500px',
+//     display: 'grid',
+//     gridTemplateColumns: '2fr 14fr 2fr',
+//     gridTemplateRows: '70px auto 10px 80px',
+//     fontSize: '1em',
+//     minHeight: '35%',
+//     background: 'white',
+//     overflowX: 'hidden'
+// };
+// const mfSmallStyle = { width: '300px' };
+// const mfMediumStyle = { width: '500px' };
+// const mfLargeStyle = { width: '800px' };
+// const mfXLStyle = { width: '1140px' };
+
+//Footer styles
+// const mfDefaultFooterStyle = {
+
+// };
 
 
 export function Modalfly(props) {
@@ -35,6 +61,21 @@ export function Modalfly(props) {
         'mf-large': props.size === 'large',
         'mf-xl': props.size === 'extraLarge'
     });
+
+    // let mfStyle = mfDefaultStyle;
+    // if (props.size === 'small') {
+    //     mfStyle = {...mfStyle, ...mfSmallStyle};
+    // } else if (props.size === 'medium') {
+    //     mfStyle = {...mfStyle, ...mfMediumStyle};
+    // } else if (props.size === 'large') {
+    //     mfStyle = {...mfStyle, ...mfLargeStyle};
+    // } else if (props.size === 'extraLarge') {
+    //     mfStyle = {...mfStyle, ...mfXLStyle};
+    // }
+
+    const mfStyle = getModalStyles(props);
+    
+
 
     //Set Footer style
     let footerClass = classNames({
