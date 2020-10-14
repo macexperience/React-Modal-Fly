@@ -1,6 +1,7 @@
 {
-  "name": "host-react-project",
+  "name": "react-modal-fly",
   "version": "0.1.0",
+  "main": "dist/index.js",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
@@ -16,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "babel --source-maps --out-dir=dist src/modalfly",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,5 +35,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4"
   }
 }

@@ -95,7 +95,8 @@ export const closeIcon = {
     textAlign: 'center',
     lineHeight: '68px',
     color: '#aaa',
-    fontSize: '26px'
+    fontSize: '26px',
+    cursor: 'pointer'
 };
 export const closeIconHover = {
     color: '#606870',

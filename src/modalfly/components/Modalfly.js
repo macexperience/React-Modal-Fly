@@ -5,9 +5,8 @@ import { reducer, initialState } from '../hooks/reducer';
 import * as actions from '../hooks/actions';
 import StepContext from '../hooks/StepContext';
 import { CSSTransition } from 'react-transition-group';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { isFunction, getModalStyles } from '../helpers/helpers'
+import { isFunction, getContainerStyle, getFooterStyle } from '../helpers/helpers'
 import * as styles from '../styles/styles';
 
 export function Modalfly(props) {
@@ -26,30 +25,9 @@ export function Modalfly(props) {
         }
     });
 
-
-    //Set root style
-    let wrapperClass = classNames({
-        'mf-wrapper': true,
-        'mf-small': props.size === 'small',
-        'mf-meduim': props.size === 'medium',
-        'mf-large': props.size === 'large',
-        'mf-xl': props.size === 'extraLarge'
-    });
-
-    const mfStyle = getModalStyles(props);
-    console.log('mfStyle:', mfStyle);
-
-
-    //Set Footer style
-    let footerClass = classNames({
-        'mf-footer-area': true,
-        'mf-footer-left': props.footerContent === 'left',
-        'mf-footer-center': props.footerContent === 'center',
-        'mf-footer-right': props.footerContent === 'right',
-        'mf-footer-space-between': props.footerContent === 'spaceBetween',
-        'mf-footer-space-around': props.footerContent === 'spaceAround',
-        'mf-footer-space-evenly': props.footerContent === 'spaceEvenly'
-    });
+    //Get container and footer styles
+    const mfStyle = getContainerStyle(props);
+    const footerStyle = getFooterStyle(props);
 
     /* Do not show component if show is false */
     if (!props.show) {
@@ -78,7 +56,7 @@ export function Modalfly(props) {
 
     const closeIcon = () => {
         if (displayCloseIcon) {
-            return (<span onClick={onCancel} className="mf-close-icon">&times;</span>);
+            return (<span onClick={onCancel} style={styles.closeIcon}>&times;</span>);
         } else {
             return null;
         }
@@ -119,7 +97,7 @@ export function Modalfly(props) {
 
     const contentArea = () => {
         return (
-            <div className="mf-content-area" currentstep={store.currentStep}>
+            <div style={styles.contentArea} currentstep={store.currentStep}>
                 {props.children}
             </div>
         );
@@ -134,10 +112,10 @@ export function Modalfly(props) {
                 classNames="mf"
                 appear
             >
-                <div id='mf-wrapper' className={wrapperClass}>
+                <div id='mf-wrapper' style={mfStyle}>
 
-                    <div className="mf-header-area">
-                        <h3>
+                    <div style={styles.headerArea}>
+                        <h3 style={styles.headerH3}>
                             {titlesGenerator()}
                         </h3>
                     </div>
@@ -146,11 +124,11 @@ export function Modalfly(props) {
 
                     {contentArea()}
 
-                    <div className="mf-progress-area">
+                    <div style={styles.progressArea}>
                         {progressCircles()}
                     </div>
 
-                    <div id='mf-footer' className={footerClass}></div>
+                    <div id='mf-footer' style={footerStyle} className='mf-footer-area'></div>
                 </div>
             </CSSTransition>
         </StepContext.Provider>
