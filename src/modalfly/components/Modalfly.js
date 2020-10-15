@@ -1,6 +1,5 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import './styles.css';
 import { reducer, initialState } from '../hooks/reducer';
 import * as actions from '../hooks/actions';
 import StepContext from '../hooks/StepContext';
@@ -109,9 +108,7 @@ export function Modalfly(props) {
                 <Transition
                     unmountOnExit
                     in={props.show}
-                    timeout={{ appear: 0, enter: 0, exit: 0 }}
-                    //timeout={500}
-                    //classNames="mf"
+                    timeout={{ appear: 0, enter: 600, exit: 500 }}
                     appear
                 >
                     {

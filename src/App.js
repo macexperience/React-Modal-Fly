@@ -51,18 +51,18 @@ class App extends Component {
 					<h3>Step 2</h3>
 					<div className="row">
 						<div className="col-sm-6">
-							<div class="input-group">
-								<span class="input-group-addon" id="firstNameLabel">First Name</span>
-								<input name='firstName' type="text" class="form-control"
+							<div className="input-group">
+								<span className="input-group-addon" id="firstNameLabel">First Name</span>
+								<input name='firstName' type="text" className="form-control"
 									placeholder="First Name" aria-describedby="firstNameLabel"
 									onChange={this.handleInputChange} value={this.state.firstName}
 								/>
 							</div>
 						</div>
 						<div className="col-sm-6">
-							<div class="input-group">
-								<span class="input-group-addon" id="lastNameLabel">Last Name</span>
-								<input name='lastName' type="text" class="form-control"
+							<div className="input-group">
+								<span className="input-group-addon" id="lastNameLabel">Last Name</span>
+								<input name='lastName' type="text" className="form-control"
 									placeholder="Last Name" aria-describedby="lastNameLabel"
 									onChange={this.handleInputChange} value={this.state.lastName}
 								/>
@@ -72,13 +72,13 @@ class App extends Component {
 					<br />
 					<Footer>
 						<button className="btn" type='button' onClick={e => Steps.previous(e)}>Back</button>
-						<button className="btn btn-primary" type='button' onClick={e => Steps.next(e)}>Next In Footer</button>
+						<button style={{marginLeft: '20px'}} className="btn btn-primary" type='button' onClick={e => Steps.next(e)}>Next In Footer</button>
 					</Footer>
 				</Step>
 
 				{/* Step 3 */}
 				<Step title='Actions' style={{ textAlign: 'center' }}>
-					<table class='table'>
+					<table className='table'>
 						<tbody>
 							<tr>
 								<td>Name</td>
@@ -102,23 +102,23 @@ class App extends Component {
 					</table>
 					<Footer>
 						<button type='button' className='btn' onClick={e => Steps.previous(e)}>Back</button>
-						<button type='button' className='btn btn-primary' onClick={e => Steps.next(e)}>Next (semantic)</button>
+						<button style={{marginLeft: '20px'}} type='button' className='btn btn-primary' onClick={e => Steps.next(e)}>Next (semantic)</button>
 					</Footer>
 				</Step>
 
 				{/* Step 4 */}
 				<Step title='Address'>
 					<h3>Step 3</h3>
-					<div class="input-group">
-						<span class="input-group-addon" id="addressLabel">Address</span>
-						<input name='address1' type="text" class="form-control"
+					<div className="input-group">
+						<span className="input-group-addon" id="addressLabel">Address</span>
+						<input name='address1' type="text" className="form-control"
 							placeholder="Address" aria-describedby="addressLabel"
 							onChange={this.handleInputChange} value={this.state.address1}
 						/>
 					</div>
 					<Footer>
 						<button className="btn" type='button' onClick={e => Steps.previous(e)}>Back</button>
-						<button className="btn btn-primary" type='button' onClick={e => Steps.next(e)}>Next In Footer</button>
+						<button style={{marginLeft: '20px'}} className="btn btn-primary" type='button' onClick={e => Steps.next(e)}>Next In Footer</button>
 					</Footer>
 				</Step>
 
@@ -140,7 +140,9 @@ class App extends Component {
 				<div className="container">
 
 					{/* MODAL COMPONENT 1 */}
-					<Modalfly size='extraLarge' workflow show={this.state.showModal1} onClose={this.closeModal1}>
+					<Modalfly size='extraLarge' workflow
+						show={this.state.showModal1} onClose={this.closeModal1}
+					>
 						{steps}
 					</Modalfly>
 

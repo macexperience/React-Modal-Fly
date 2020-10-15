@@ -26,28 +26,18 @@ export const mfDefaultStyle = {
     minHeight: '35%',
     maxHeight: '100%',
     background: 'white',
-    overflowX: 'hidden'
+    overflowX: 'hidden',
+    transition: 'opacity 500ms'
 };
 export const mfSmallStyle = { width: '300px' };
 export const mfMediumStyle = { width: '500px' };
 export const mfLargeStyle = { width: '800px' };
 export const mfXLStyle = { width: '1140px' };
 
-// export const mfAppear = { opacity: 0 };
-// export const mfEnter = { opacity: 0 };
-// export const mfEnterDone = {
-//     opacity: 1,
-//     transition: 'opacity 500ms'
-// };
-// export const mfExit = { opacity: 0 };
-// export const mfExitActive = {
-//     opacity: 0,
-//     transition: 'opacity 500ms'
-// };
-// export const mfExitDone = { opacity: 0 };
+ 
 export const mfTransitionStyles = {
     entering: { opacity: 0 },
-    entered: { opacity: 1, transition: 'opacity 500ms' },
+    entered: { opacity: 1, transition: 'opacity 600ms' },
     exiting: { opacity: 1 },
     exited: { opacity: 0, transition: 'opacity 500ms' }
 };
