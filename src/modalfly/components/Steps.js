@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import StepContext from '../hooks/StepContext';
 
 export function Steps(props) {

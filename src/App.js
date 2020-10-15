@@ -16,7 +16,7 @@ class App extends Component {
 	handleShowClick = e => {
 		if (e.target.name === 'btn1') {
 			this.setState(prevState => ({ showModal1: !prevState.showModal1 }));
-		} else if (e.target.name == 'btn2') {
+		} else if (e.target.name === 'btn2') {
 			this.setState(prevState => ({ showModal2: !prevState.showModal2 }));
 		}
 	}
@@ -174,12 +174,12 @@ class App extends Component {
 
 						<div className="row text-center">
 							<div className="col-md-6">
-								<button name='btn1' className="btn btn-lg btn-primary" onClick={this.handleShowClick} role="button">
+								<button name='btn1' className="btn btn-lg btn-primary" onClick={this.handleShowClick}>
 									Open Workflow Modal
 						</button>
 							</div>
 							<div className="col-md-6">
-								<button name='btn2' className="btn btn-lg btn-default" onClick={this.handleShowClick} role="button">
+								<button name='btn2' className="btn btn-lg btn-default" onClick={this.handleShowClick}>
 									Open Single View Modal
 						</button>
 							</div>

@@ -1,3 +1,14 @@
+/* Modal-Fly Container */
+export const mfContainer = { zIndex: '1000' };
+export const mfOverlay = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'rgba(0,0,0,.5)'
+};
+
 //Modal-Fly default style
 export const mfDefaultStyle = {
     position: 'fixed',
@@ -7,11 +18,13 @@ export const mfDefaultStyle = {
     borderRadius: '5px',
     boxShadow: '0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.11)',
     width: '500px',
+    maxWidth: '100%',
     display: 'grid',
     gridTemplateColumns: '2fr 14fr 2fr',
     gridTemplateRows: '70px auto 10px 80px',
     fontSize: '1em',
     minHeight: '35%',
+    maxHeight: '100%',
     background: 'white',
     overflowX: 'hidden'
 };
@@ -19,6 +32,25 @@ export const mfSmallStyle = { width: '300px' };
 export const mfMediumStyle = { width: '500px' };
 export const mfLargeStyle = { width: '800px' };
 export const mfXLStyle = { width: '1140px' };
+
+// export const mfAppear = { opacity: 0 };
+// export const mfEnter = { opacity: 0 };
+// export const mfEnterDone = {
+//     opacity: 1,
+//     transition: 'opacity 500ms'
+// };
+// export const mfExit = { opacity: 0 };
+// export const mfExitActive = {
+//     opacity: 0,
+//     transition: 'opacity 500ms'
+// };
+// export const mfExitDone = { opacity: 0 };
+export const mfTransitionStyles = {
+    entering: { opacity: 0 },
+    entered: { opacity: 1, transition: 'opacity 500ms' },
+    exiting: { opacity: 1 },
+    exited: { opacity: 0, transition: 'opacity 500ms' }
+};
 
 export const headerArea = {
     gridColumn: '1/4',
@@ -55,7 +87,7 @@ export const contentArea = {
 export const progressArea = {
     gridColumn: '2/3',
     gridRow: '3/4',
-    textAlign: 'center'   
+    textAlign: 'center'
 };
 export const progressDots = {
     height: '6px',
@@ -80,12 +112,12 @@ export const footerArea = {
     flexDirection: 'row',
     justifyContent: 'flex-end'
 };
-export const footerLeft = { justifyContent: 'flex-start'};
-export const footerCenter = { justifyContent: 'center'};
-export const footerRight = { justifyContent: 'flex-end'};
-export const footerSpaceBetween = { justifyContent: 'space-between'};
-export const footerSpaceAround = { justifyContent: 'space-around'};
-export const footerSpaceEvenly = { justifyContent: 'space-evenly'};
+export const footerLeft = { justifyContent: 'flex-start' };
+export const footerCenter = { justifyContent: 'center' };
+export const footerRight = { justifyContent: 'flex-end' };
+export const footerSpaceBetween = { justifyContent: 'space-between' };
+export const footerSpaceAround = { justifyContent: 'space-around' };
+export const footerSpaceEvenly = { justifyContent: 'space-evenly' };
 
 
 /* Close Modal Icon */
@@ -103,6 +135,3 @@ export const closeIconHover = {
     textDecoration: 'none',
     cursor: 'pointer'
 };
-
-
-

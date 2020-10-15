@@ -4,7 +4,7 @@ import './styles.css';
 import { reducer, initialState } from '../hooks/reducer';
 import * as actions from '../hooks/actions';
 import StepContext from '../hooks/StepContext';
-import { CSSTransition } from 'react-transition-group';
+import { Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { isFunction, getContainerStyle, getFooterStyle } from '../helpers/helpers'
 import * as styles from '../styles/styles';
@@ -23,16 +23,16 @@ export function Modalfly(props) {
         } else {
             setContainerRef(false);
         }
-    });
+    }, [props.show]);
 
     //Get container and footer styles
     const mfStyle = getContainerStyle(props);
     const footerStyle = getFooterStyle(props);
-
-    /* Do not show component if show is false */
+    
     if (!props.show) {
         return null;
     }
+
     //Check mode
     const inWorkflowMode = props.workflow && props.children;
 
@@ -104,34 +104,45 @@ export function Modalfly(props) {
     }
 
     const modal = (
-        <StepContext.Provider value={{ store, dispatch }}>
-            <CSSTransition
-                unmountOnExit
-                in={props.show}
-                timeout={{ appear: 0, enter: 0, exit: 500 }}
-                classNames="mf"
-                appear
-            >
-                <div id='mf-wrapper' style={mfStyle}>
+        <>
+            <StepContext.Provider value={{ store, dispatch }}>
+                <Transition
+                    unmountOnExit
+                    in={props.show}
+                    timeout={{ appear: 0, enter: 0, exit: 0 }}
+                    //timeout={500}
+                    //classNames="mf"
+                    appear
+                >
+                    {
+                        state => (
+                            <div id='mf-wrapper' style={{
+                                ...mfStyle,
+                                ...styles.mfTransitionStyles[state]
+                            }}>
 
-                    <div style={styles.headerArea}>
-                        <h3 style={styles.headerH3}>
-                            {titlesGenerator()}
-                        </h3>
-                    </div>
+                                <div style={styles.headerArea}>
+                                    <h3 style={styles.headerH3}>
+                                        {titlesGenerator()}
+                                    </h3>
+                                </div>
 
-                    {closeIcon()}
+                                {closeIcon()}
 
-                    {contentArea()}
+                                {contentArea()}
 
-                    <div style={styles.progressArea}>
-                        {progressCircles()}
-                    </div>
+                                <div style={styles.progressArea}>
+                                    {progressCircles()}
+                                </div>
 
-                    <div id='mf-footer' style={footerStyle} className='mf-footer-area'></div>
-                </div>
-            </CSSTransition>
-        </StepContext.Provider>
+                                <div id='mf-footer' style={footerStyle} className='mf-footer-area'></div>
+                            </div>
+                        )
+                    }
+
+                </Transition>
+            </StepContext.Provider>
+        </>
     );
 
     if (containerRef) {

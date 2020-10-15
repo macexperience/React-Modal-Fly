@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './styles.css';
 
 export function Footer(props) {
     const [footerRef, setFooterRef] = useState(null);
