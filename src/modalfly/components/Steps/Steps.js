@@ -1,11 +1,20 @@
-import { useContext, useState } from 'react';
-import StepContext from '../hooks/StepContext';
+import React, { useContext, useState } from 'react';
+import StepContext from '../../hooks/StepContext';
 
 export function Steps(props) {
     const stepContext = useContext(StepContext);
     const [stepData, setStepData] = useState({});
 
-    const totalSections = props.children.length;
+    //Do not render anything if Modalfly component (context provider) has not been mounted
+    if (!stepContext.store.currentStep) {
+        return (<h3 style={{color: "red"}}>'Steps' Error: At least one 'Modalfly' component is required for context.</h3>)
+    }
+
+    const totalSections = props.children ? props.children.length : 0;
+    //Do not render if there are no children
+    if (totalSections === 0) {
+        return null;
+    }
     //Expose next function
     Steps.next = (e) => {
         if (stepContext.store.currentStep < totalSections - 1) {
@@ -34,6 +43,5 @@ export function Steps(props) {
             stepContext.dispatch({ type: 'STEP_BACKWARD' });
         }
     }
-
     return props.children[stepContext.store.currentStep];
 };

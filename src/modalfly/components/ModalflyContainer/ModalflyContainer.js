@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import * as styles from '../styles/styles';
+import * as styles from '../../styles/styles';
 
 export function ModalflyContainer(props) {
     //show/hide overlay state hook

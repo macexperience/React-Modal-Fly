@@ -8,6 +8,10 @@ export function Footer(props) {
     useEffect(() => {
         //Query all footer areas    
         const elements = document.getElementsByClassName('mf-footer-area');
+        //No do not set footer reference if elements is empty
+        if (elements.length === 0) {
+            return;
+        }
         //Select the most recent addition, the div with no children
         let footerRef;
         for (let i = 0; i < elements.length; i++) {

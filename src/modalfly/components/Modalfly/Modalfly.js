@@ -1,12 +1,12 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { reducer, initialState } from '../hooks/reducer';
-import * as actions from '../hooks/actions';
-import StepContext from '../hooks/StepContext';
+import { reducer, initialState } from '../../hooks/reducer';
+import * as actions from '../../hooks/actions';
+import StepContext from '../../hooks/StepContext';
 import { Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import { isFunction, getContainerStyle, getFooterStyle } from '../helpers/helpers'
-import * as styles from '../styles/styles';
+import { isFunction, getContainerStyle, getFooterStyle } from '../../helpers/helpers'
+import * as styles from '../../styles/styles';
 
 export function Modalfly(props) {
     //Create reducer
@@ -39,12 +39,18 @@ export function Modalfly(props) {
     let titlesList = []
     let currentStepCount;
     if (inWorkflowMode) {
+        const children = props.children.props.children
+        //Ensure there exist at least 2 steps for workflow mode
+        const isAnObject = typeof children === 'object' && children !== null;
+        const isAnArray = Array.isArray(children);
+        if (isAnObject && !isAnArray) {
+            return (<h3 style={{color: "red"}}>'Modalfly' Error: At least two 'Step' components are required for workflow mode.</h3>)
+        }
         //Count the current steps
-        currentStepCount = props.children.props.children.length;
+        currentStepCount = children.length;
         if (currentStepCount === 0) return new Error(`Modalfly workflow mode requires at least one Step.`);
         //Get titles
-        const divSteps = props.children.props.children;
-        titlesList = divSteps.map(step => {
+        titlesList = children.map(step => {
             return step.props.title && typeof step.props.title === 'string' ? step.props.title : 'Attention'
         });
     }
