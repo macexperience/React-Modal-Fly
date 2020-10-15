@@ -6,7 +6,11 @@ import * as styles from '../styles/styles';
  * @returns {Boolean} If the provided param is a function
  */
 export function isFunction(functionToCheck) {
-    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+    if (functionToCheck === null || functionToCheck === undefined) {
+        return false;
+    } else {
+        return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+    }
 }
 
 
