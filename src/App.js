@@ -155,7 +155,7 @@ class App extends Component {
 					{/* MODAL COMPONENT 2 */}
 					<Modalfly
 						//size='small'
-						title='Single View Modal'
+						title='React-Modal-Fly'
 						show={this.state.showModal2}
 						onClose={this.closeModal2}
 						footerContent='spaceEvenly'
@@ -163,7 +163,7 @@ class App extends Component {
 						<div>
 							<h3 style={{textAlign: 'center'}}>Single View Modal</h3>
 							<p>
-								This is a single view modal. It does not use the <code>Steps</code> component.
+								This is a single view modal.
 							</p>
 						</div>
 						<Footer >
