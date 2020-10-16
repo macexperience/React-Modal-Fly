@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import StepContext from '../../hooks/StepContext';
+import * as types from '../../hooks/actions';
 
 export function Steps(props) {
     const stepContext = useContext(StepContext);
@@ -13,30 +14,19 @@ export function Steps(props) {
     //Expose next function
     Steps.next = (e) => {
         if (stepContext.store.currentStep < totalSections - 1) {
-            stepContext.dispatch({ type: 'STEP_FORWARD', data: stepData });
+            stepContext.dispatch({ type: types.STEP_FORWARD, data: stepData });
         } else if (stepContext.store.currentStep === totalSections - 1) {
-
-            stepContext.dispatch({ type: 'PERSIST_STEP_DATA', data: stepData });
+            stepContext.dispatch({ type: types.PERSIST_STEP_DATA, data: stepData });
         }
         //Clear state
         setStepData({});
     }
 
-    //Handles onChange events for inputs 
-    Steps.onChange = e => {
-        const inputName = e.target.name;
-        stepData[inputName] = e.target.value;
-        setStepData(stepData);
-    }
-
-    Steps.complete = e => {
-        stepContext.dispatch({ type: 'PERSIST_STEP_DATA', data: stepData });
-    }
-
     Steps.previous = e => {
         if (stepContext.store.currentStep !== 0) {
-            stepContext.dispatch({ type: 'STEP_BACKWARD' });
+            stepContext.dispatch({ type: types.STEP_BACKWARD });
         }
     }
+
     return props.children[stepContext.store.currentStep];
 };

@@ -1,4 +1,3 @@
-// Define constants
 /* Define Constant Types */
 export const STEP_FORWARD = 'STEP_FORWARD';
 export const STEP_BACKWARD = 'STEP_BACKWARD';

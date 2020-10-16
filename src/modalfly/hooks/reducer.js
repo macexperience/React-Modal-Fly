@@ -10,7 +10,7 @@ export const initialState = {
 Don't mutate 'state'.
 Create a copy with Object.assign()
 */
-export function reducer(state, action) {
+export function reducer(state = initialState, action) {
     //Set initial state
     switch (action.type) {
         case STEP_FORWARD:
