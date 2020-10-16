@@ -28,5 +28,9 @@ export function Steps(props) {
         }
     }
 
+    Steps.complete = e => {
+        stepContext.dispatch({ type: types.RESET })
+    }
+    
     return props.children[stepContext.store.currentStep];
 };
