@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Steps /> renders an error h3 when no context exists 1`] = `
-<h3
-  style={
-    Object {
-      "color": "red",
-    }
-  }
->
-  'Steps' Error: At least one 'Modalfly' component is required for context.
-</h3>
-`;
-
 exports[`<Steps /> renders an error h3 when only one step is provided 1`] = `
 <h3
   style={
@@ -85,15 +73,16 @@ exports[`<Steps /> renders and mounts with all children 1`] = `
       }
     }
   >
-    <h3
-      style={
-        Object {
-          "color": "red",
-        }
-      }
+    <div
+      title="First Step"
     >
-      'Steps' Error: At least one 'Modalfly' component is required for context.
-    </h3>
+      <h3>
+        Step 1
+      </h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptate dignissimos beatae, architecto, unde vero provident facilis recusandae laborum quam eligendi. Error at placeat eveniet labore blanditiis beatae, maiores adipisci.
+      </p>
+    </div>
   </div>
   <div
     style={

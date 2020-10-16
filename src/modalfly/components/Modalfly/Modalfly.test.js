@@ -1,7 +1,5 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Steps } from '../Steps/Steps';
-import { Step } from '../Step/Step';
 import { Footer } from '../Footer/Footer';
 import { Modalfly } from './Modalfly';
 

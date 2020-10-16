@@ -5,11 +5,6 @@ export function Steps(props) {
     const stepContext = useContext(StepContext);
     const [stepData, setStepData] = useState({});
 
-    //Do not render anything if Modalfly component (context provider) has not been mounted
-    if (!stepContext.store.currentStep) {
-        return (<h3 style={{color: "red"}}>'Steps' Error: At least one 'Modalfly' component is required for context.</h3>)
-    }
-
     const totalSections = props.children ? props.children.length : 0;
     //Do not render if there are no children
     if (totalSections === 0) {

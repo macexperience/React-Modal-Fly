@@ -13,7 +13,12 @@ export function isFunction(functionToCheck) {
     }
 }
 
-
+/** Generates the modal style object
+ * @version 1.0
+ * @param {Object} props - Props object
+ * @param {String} props.size - The size for the modal
+ * @returns {Object} The modal styles object
+ */
 export function getContainerStyle(props) {
     let mfStyle = styles.mfDefaultStyle;
     if (props.size === 'small') {
@@ -28,6 +33,12 @@ export function getContainerStyle(props) {
     return mfStyle;
 }
 
+/** Generates the footer container style object
+ * @version 1.0
+ * @param {Object} props - Props object
+ * @param {String} props.footerContent - Specify how the footer area will arrange its contents (flexbox's 'justifyContent')
+ * @returns {Object} The footer container styles object
+ */
 export function getFooterStyle(props) {
     let footerStyle = styles.footerArea;
     if (props.footerContent === 'left') {

@@ -6,12 +6,11 @@ import { Footer } from '../Footer/Footer';
 import { Modalfly } from '../Modalfly/Modalfly';
 
 describe('<Steps />', () => {
-    it('renders an error h3 when no context exists', () => {
-        expect.assertions(2);
+    it('returns null with no Step children', () => {
+        expect.assertions(1);
         const component = renderer.create(<Steps />);
         const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-        expect(tree.type).toEqual('h3');
+        expect(tree).toBeNull();
     });
 
     it('renders an error h3 when only one step is provided', () => {

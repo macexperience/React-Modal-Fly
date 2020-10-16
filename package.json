@@ -17,7 +17,14 @@
     "start": "react-scripts start",
     "build": "babel --source-maps --out-dir=dist src/modalfly",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "jest": "npm test -- --watchAll",
+    "coverage": "npm test -- --coverage --watchAll"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/modalfly/**/*.{js,jsx}"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
