@@ -93,6 +93,7 @@ Default value is in **bold**.
 |workflow | `Boolean` | `True`, **`False`** | Controls whether or not the Modal is in workflow mode. |
 
 #### Step Component Props
+Default value is in **bold**.
 | Prop Name | Type | Options | Description |
 | --------- | ---- | ------- | ----------- |
 |className| `String` | **None**| Class name that will be applied to the Step's `<div>`. |
