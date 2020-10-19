@@ -1,5 +1,5 @@
-export { Modalfly } from './components/Modalfly';
-export { Steps } from './components/Steps';
-export { Step } from './components/Step';
-export { Footer } from './components/Footer';
-export { ModalflyContainer } from './components/ModalflyContainer';
+export { Modalfly } from './components/Modalfly/Modalfly';
+export { Steps } from './components/Steps/Steps';
+export { Step } from './components/Step/Step';
+export { Footer } from './components/Footer/Footer';
+export { ModalflyContainer } from './components/ModalflyContainer/ModalflyContainer';

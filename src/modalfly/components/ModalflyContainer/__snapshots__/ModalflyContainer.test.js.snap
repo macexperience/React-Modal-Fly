@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModalflyContainer /> renders and mounts 1`] = `
+<div
+  className="modalflycontainer"
+  id="modalfly-container"
+  style={
+    Object {
+      "zIndex": "1000",
+    }
+  }
+/>
+`;

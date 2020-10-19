@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modalfly /> renders an empty modal 1`] = `
+<div
+  id="mf-wrapper"
+  style={
+    Object {
+      "background": "white",
+      "borderRadius": "5px",
+      "boxShadow": "0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.11)",
+      "display": "grid",
+      "fontSize": "1em",
+      "gridTemplateColumns": "2fr 14fr 2fr",
+      "gridTemplateRows": "70px auto 10px 80px",
+      "left": "50%",
+      "maxHeight": "100%",
+      "maxWidth": "100%",
+      "minHeight": "35%",
+      "opacity": 0,
+      "overflowX": "hidden",
+      "position": "fixed",
+      "top": "40%",
+      "transform": "translate(-50%, -50%)",
+      "transition": "opacity 500ms",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "#ebebeb",
+        "borderRadius": "5px 5px 0 0",
+        "gridColumn": "1/4",
+        "gridRow": "1/2",
+        "padding": "20px",
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "color": "rgba(0,0,0,.7)",
+          "fontSize": "1.7em",
+          "margin": 0,
+          "padding": 0,
+        }
+      }
+    >
+      Attention
+    </h3>
+  </div>
+  <div
+    currentstep={0}
+    style={
+      Object {
+        "gridColumn": "2/3",
+        "gridRow": "2/3",
+        "paddingBottom": "20px",
+        "paddingTop": "20px",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "gridColumn": "2/3",
+        "gridRow": "3/4",
+        "textAlign": "center",
+      }
+    }
+  />
+  <div
+    className="mf-footer-area"
+    id="mf-footer"
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "gridColumn": "1/4",
+        "gridRow": "4/5",
+        "justifyContent": "flex-end",
+        "padding": "15px",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`<Modalfly /> renders an single view modal 1`] = `
+<div
+  id="mf-wrapper"
+  style={
+    Object {
+      "background": "white",
+      "borderRadius": "5px",
+      "boxShadow": "0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.11)",
+      "display": "grid",
+      "fontSize": "1em",
+      "gridTemplateColumns": "2fr 14fr 2fr",
+      "gridTemplateRows": "70px auto 10px 80px",
+      "left": "50%",
+      "maxHeight": "100%",
+      "maxWidth": "100%",
+      "minHeight": "35%",
+      "opacity": 0,
+      "overflowX": "hidden",
+      "position": "fixed",
+      "top": "40%",
+      "transform": "translate(-50%, -50%)",
+      "transition": "opacity 500ms",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "#ebebeb",
+        "borderRadius": "5px 5px 0 0",
+        "gridColumn": "1/4",
+        "gridRow": "1/2",
+        "padding": "20px",
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "color": "rgba(0,0,0,.7)",
+          "fontSize": "1.7em",
+          "margin": 0,
+          "padding": 0,
+        }
+      }
+    >
+      Attention
+    </h3>
+  </div>
+  <div
+    currentstep={0}
+    style={
+      Object {
+        "gridColumn": "2/3",
+        "gridRow": "2/3",
+        "paddingBottom": "20px",
+        "paddingTop": "20px",
+      }
+    }
+  >
+    <div>
+      <h3>
+        Would you like to overwrite?
+      </h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </p>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "gridColumn": "2/3",
+        "gridRow": "3/4",
+        "textAlign": "center",
+      }
+    }
+  />
+  <div
+    className="mf-footer-area"
+    id="mf-footer"
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "gridColumn": "1/4",
+        "gridRow": "4/5",
+        "justifyContent": "flex-end",
+        "padding": "15px",
+      }
+    }
+  />
+</div>
+`;

@@ -1,14 +1,12 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import './styles.css';
-import { reducer, initialState } from '../hooks/reducer';
-import * as actions from '../hooks/actions';
-import StepContext from '../hooks/StepContext';
-import { CSSTransition } from 'react-transition-group';
-import classNames from 'classnames';
+import { reducer, initialState } from '../../hooks/reducer';
+import * as actions from '../../hooks/actions';
+import StepContext from '../../hooks/StepContext';
+import { Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import { isFunction } from '../helpers/helpers'
-
+import { isFunction, getContainerStyle, getFooterStyle } from '../../helpers/helpers'
+import * as styles from '../../styles/styles';
 
 export function Modalfly(props) {
     //Create reducer
@@ -24,33 +22,16 @@ export function Modalfly(props) {
         } else {
             setContainerRef(false);
         }
-    });
+    }, [props.show]);
 
-
-    //Set root style
-    let wrapperClass = classNames({
-        'mf-wrapper': true,
-        'mf-small': props.size === 'small',
-        'mf-meduim': props.size === 'medium',
-        'mf-large': props.size === 'large',
-        'mf-xl': props.size === 'extraLarge'
-    });
-
-    //Set Footer style
-    let footerClass = classNames({
-        'mf-footer-area': true,
-        'mf-footer-left': props.footerContent === 'left',
-        'mf-footer-center': props.footerContent === 'center',
-        'mf-footer-right': props.footerContent === 'right',
-        'mf-footer-space-between': props.footerContent === 'spaceBetween',
-        'mf-footer-space-around': props.footerContent === 'spaceAround',
-        'mf-footer-space-evenly': props.footerContent === 'spaceEvenly'
-    });
-
-    /* Do not show component if show is false */
+    //Get container and footer styles
+    const mfStyle = getContainerStyle(props);
+    const footerStyle = getFooterStyle(props);
+    
     if (!props.show) {
         return null;
     }
+
     //Check mode
     const inWorkflowMode = props.workflow && props.children;
 
@@ -58,12 +39,18 @@ export function Modalfly(props) {
     let titlesList = []
     let currentStepCount;
     if (inWorkflowMode) {
+        const children = props.children.props.children
+        //Ensure there exist at least 2 steps for workflow mode
+        const isAnObject = typeof children === 'object' && children !== null;
+        const isAnArray = Array.isArray(children);
+        if (isAnObject && !isAnArray) {
+            return (<h3 style={{color: "red"}}>'Modalfly' Error: At least two 'Step' components are required for workflow mode.</h3>)
+        }
         //Count the current steps
-        currentStepCount = props.children.props.children.length;
+        currentStepCount = children.length;
         if (currentStepCount === 0) return new Error(`Modalfly workflow mode requires at least one Step.`);
         //Get titles
-        const divSteps = props.children.props.children;
-        titlesList = divSteps.map(step => {
+        titlesList = children.map(step => {
             return step.props.title && typeof step.props.title === 'string' ? step.props.title : 'Attention'
         });
     }
@@ -73,8 +60,11 @@ export function Modalfly(props) {
     const displayCloseIcon = props.onClose && onCloseIsValid;
 
     const closeIcon = () => {
-        if (displayCloseIcon) return (<span onClick={onCancel} className="mf-close-icon">&times;</span>);
-        else return null;
+        if (displayCloseIcon) {
+            return (<span onClick={onCancel} style={styles.closeIcon}>&times;</span>);
+        } else {
+            return null;
+        }
     }
 
     // Generate progress circles for workflow mode
@@ -112,41 +102,50 @@ export function Modalfly(props) {
 
     const contentArea = () => {
         return (
-            <div className="mf-content-area" currentstep={store.currentStep}>
+            <div style={styles.contentArea} currentstep={store.currentStep}>
                 {props.children}
             </div>
         );
     }
 
     const modal = (
-        <StepContext.Provider value={{ store, dispatch }}>
-            <CSSTransition
-                unmountOnExit
-                in={props.show}
-                timeout={{ appear: 0, enter: 0, exit: 500 }}
-                classNames="mf"
-                appear
-            >
-                <div id='mf-wrapper' className={wrapperClass}>
+        <>
+            <StepContext.Provider value={{ store, dispatch }}>
+                <Transition
+                    unmountOnExit
+                    in={props.show}
+                    timeout={{ appear: 0, enter: 600, exit: 500 }}
+                    appear
+                >
+                    {
+                        state => (
+                            <div id='mf-wrapper' style={{
+                                ...mfStyle,
+                                ...styles.mfTransitionStyles[state]
+                            }}>
 
-                    <div className="mf-header-area">
-                        <h3>
-                            {titlesGenerator()}
-                        </h3>
-                    </div>
+                                <div style={styles.headerArea}>
+                                    <h3 style={styles.headerH3}>
+                                        {titlesGenerator()}
+                                    </h3>
+                                </div>
 
-                    {closeIcon()}
+                                {closeIcon()}
 
-                    {contentArea()}
+                                {contentArea()}
 
-                    <div className="mf-progress-area">
-                        {progressCircles()}
-                    </div>
+                                <div style={styles.progressArea}>
+                                    {progressCircles()}
+                                </div>
 
-                    <div id='mf-footer' className={footerClass}></div>
-                </div>
-            </CSSTransition>
-        </StepContext.Provider>
+                                <div id='mf-footer' style={footerStyle} className='mf-footer-area'></div>
+                            </div>
+                        )
+                    }
+
+                </Transition>
+            </StepContext.Provider>
+        </>
     );
 
     if (containerRef) {
