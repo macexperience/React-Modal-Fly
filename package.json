@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "private": true,
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "dependencies": {
     "cra-template": "1.0.3",
