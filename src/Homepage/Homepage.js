@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { Modalfly, Steps, Step, Footer } from '../modalfly/index';
+import { Button, Dropdown } from 'semantic-ui-react';
+
+const actionOptions = [
+    { key: 'action1', text: 'Arrived', value: 'arrived' },
+    { key: 'action2', text: 'No Show', value: 'noshow' },
+    { key: 'action3', text: 'Canceled', value: 'canceled' }
+];
 
 export default class Homepage extends Component {
 
@@ -160,18 +167,28 @@ export default class Homepage extends Component {
                     show={this.state.showModal2}
                     onClose={this.closeModal2}
                     footerContent='spaceEvenly'
-                    style
                 >
                     <div>
                         <h3 style={{ textAlign: 'center' }}>Single View Modal</h3>
                         <p>
-                            This is a single view modal.
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error nemo aut autem asperiores facilis, quod laboriosam nesciunt
+                            quam qui nisi distinctio libero dolorem quis eos eveniet deleniti possimus minima. Voluptatibus.
                         </p>
                     </div>
-                    <Footer >
+                    <Footer>
+                        <Button.Group color='blue'>
+                            <Button style={{ marginLeft: '20px' }} primary>Select Action</Button>
+                            <Dropdown
+                                className='button icon'
+                                floating
+                                options={actionOptions}
+                                trigger={<React.Fragment />}
+                            />
+                        </Button.Group>
+
                         {/* <button className='btn btn-danger' onClick={this.closeModal2} >Close</button>
                         <button className='btn btn-primary' onClick={this.closeModal2} >Done</button> */}
-                        <div>
+                        {/* <div>
                             <label for="pet-select">Choose a pet:</label>
                             <select name="pets" id="pet-select">
                                 <option value="">--Please choose an option--</option>
@@ -182,7 +199,7 @@ export default class Homepage extends Component {
                                 <option value="spider">Spider</option>
                                 <option value="goldfish">Goldfish</option>
                             </select>
-                        </div>
+                        </div> */}
                     </Footer>
                 </Modalfly >
 

@@ -1,6 +1,6 @@
 {
   "name": "react-modal-fly",
-  "version": "0.1.0",
+  "version": "0.9.1",
   "main": "dist/index.js",
   "private": true,
   "peerDependencies": {
@@ -10,7 +10,9 @@
   "dependencies": {
     "cra-template": "1.0.3",
     "prop-types": "^15.7.2",
-    "react-transition-group": "^4.4.1"
+    "react-transition-group": "^4.4.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

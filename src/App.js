@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ModalflyContainer } from './modalfly/index';
 import Homepage from './Homepage/Homepage';
+import 'semantic-ui-css/semantic.min.css'
 
 class App extends Component {
 	constructor() {

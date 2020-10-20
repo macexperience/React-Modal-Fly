@@ -26,7 +26,7 @@ export const mfDefaultStyle = {
     minHeight: '35%',
     maxHeight: '100%',
     background: 'white',
-    overflowX: 'hidden',
+    overflow: 'visible',
     transition: 'opacity 500ms'
 };
 export const mfSmallStyle = { width: '300px' };
