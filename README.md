@@ -14,12 +14,12 @@ We recommend placing the component  as the last component in the root of the app
 App.js
 ```jsx
 function App() {
-	return (
-		<>
-			<MainContent>
-			<ModalflyContainer />
-		</>
-	);
+    return (
+	<>
+	    <MainContent>
+	    <ModalflyContainer />
+	</>
+    );
 }
 ```
 
@@ -33,13 +33,13 @@ title='Demo'
 show={showModal}
 onClose={this.handleClose}
 >
-	<div>
-		<h3>Single View Mode</h3>
-		<p>Content paragraph.</p>
-	</div>
-	<Footer>
-		<button onClick={this.handleClose}>Close</button>
-	</Footer>
+    <div>
+	<h3>Single View Mode</h3>
+	<p>Content paragraph.</p>
+    </div>
+    <Footer>
+	<button onClick={this.handleClose}>Close</button>
+    </Footer>
 </Modalfly>
 ```
 
@@ -52,31 +52,31 @@ workflow
 show={showModal}
 onClose={this.handleClose}
 >
-	<Steps>
-		<Step title='Contact Info'>
-			<h3>Step 1</h3>
-			<p>Content</p>
-			<Footer>
-				<button onClick={e => Steps.next(e)}>Next</button>
-			</Footer>
-		</Step>
-		<Step title='Device Details'>
-			<h3>Step 2</h3>
-			<p>Content</p>
-			<Footer>
-				<button onClick={e => Steps.previous(e)}>Back</button>
-				<button onClick={e => Steps.next(e)}>Next</button>
-			</Footer>
-		</Step>
-		<Step title='Confirm'>
-			<h3>Step 3</h3>
-			<p>Content</p>
-			<Footer>
-				<button onClick={e => Steps.previous(e)}>Back</button>
-				<button onClick={e => {this.handleComplete(); Steps.complete(e);}}>Complete</button>
-			</Footer>
-		</Step>
-	</Steps>
+    <Steps>
+        <Step title='Contact Info'>
+	    <h3>Step 1</h3>
+	    <p>Content</p>
+	    <Footer>
+	        <button onClick={e => Steps.next(e)}>Next</button>
+	    </Footer>
+	</Step>
+	<Step title='Device Details'>
+	    <h3>Step 2</h3>
+	    <p>Content</p>
+	    <Footer>
+		<button onClick={e => Steps.previous(e)}>Back</button>
+		<button onClick={e => Steps.next(e)}>Next</button>
+	    </Footer>
+	</Step>
+	<Step title='Confirm'>
+	    <h3>Step 3</h3>
+	    <p>Content</p>
+	    <Footer>
+		<button onClick={e => Steps.previous(e)}>Back</button>
+		<button onClick={e => {this.handleComplete(); Steps.complete(e);}}>Complete</button>
+	    </Footer>
+	</Step>
+    </Steps>
 </Modalfly>
 ```
 The `Steps` component must be used in workflow mode because it uses context to achieve the forward and back functionality.
