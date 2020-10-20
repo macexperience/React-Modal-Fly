@@ -86,9 +86,11 @@ Default value is in **bold**.
 | Prop Name | Type | Options | Description |
 | --------- | ------ | ------ | ----- |
 |footerContent | `String` | "left", "center", "**right**", "spaceBetween", "spaceAround", "spaceEvenly"|Controls how the footer content will be aligned. |
+| footerStyle | `Object` | **null** | Inline style object |
 |onClose | `func` | **None** | If an onClose function is not provided, the close icon button is not displayed. |
 |show | `Boolean` | `True`, **`False`** | Controls whether or not the Modal is displayed. |
 |size | `String` | "small", "**medium**", "large", "extraLarge" | The size of the modal.
+|style | `Object` | **null** | Inline style object |
 |title      | `String` | "**Attention**" |Sets the modal title. |
 |workflow | `Boolean` | `True`, **`False`** | Controls whether or not the Modal is in workflow mode. |
 
@@ -99,6 +101,9 @@ Default value is in **bold**.
 |className| `String` | **None**| Class name that will be applied to the Step's `<div>`. |
 |style | `Object` | **None**| Style object that will be applied to the Step's `<div>`. |
 |title | `String` | **Empty String** | The title that will be displayed at this step. |
+
+## Styling
+Styles can be found at `src/modalfly/styles/styles.js`.
 
 ## Demos
 Demos coming soon for CodeSandbox.
