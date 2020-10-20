@@ -21,6 +21,10 @@ export function isFunction(functionToCheck) {
  */
 export function getContainerStyle(props) {
     let mfStyle = styles.mfDefaultStyle;
+    //Check for additional inline styles
+    if (props.style) {
+        mfStyle = { ...mfStyle, ...props.style };
+    }
     if (props.size === 'small') {
         mfStyle = { ...mfStyle, ...styles.mfSmallStyle };
     } else if (props.size === 'medium') {
@@ -41,6 +45,10 @@ export function getContainerStyle(props) {
  */
 export function getFooterStyle(props) {
     let footerStyle = styles.footerArea;
+    //Check for additional inline styles
+    if (props.footerStyle) {
+        footerStyle = { ...footerStyle, ...props.footerStyle };
+    }
     if (props.footerContent === 'left') {
         footerStyle = { ...footerStyle, ...styles.footerLeft };
     } else if (props.footerContent === 'center') {
@@ -48,7 +56,7 @@ export function getFooterStyle(props) {
     } else if (props.footerContent === 'right') {
         footerStyle = { ...footerStyle, ...styles.footerRight };
     } else if (props.footerContent === 'spaceBetween') {
-        footerStyle = { ...footerStyle, ...styles.footerSpaceBetween};
+        footerStyle = { ...footerStyle, ...styles.footerSpaceBetween };
     } else if (props.footerContent === 'spaceAround') {
         footerStyle = { ...footerStyle, ...styles.footerSpaceAround };
     } else if (props.footerContent === 'spaceEvenly') {

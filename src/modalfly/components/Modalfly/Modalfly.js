@@ -169,12 +169,16 @@ Modalfly.propTypes = {
         });
         return error;
     },
-    //Modal sizes
-    size: PropTypes.oneOf(['small', 'medium', 'large', 'extraLarge']),
     //Determines how the footer contents will be justified
     footerContent: PropTypes.oneOf(['left', 'center', 'right', 'spaceBetween', 'spaceAround', 'spaceEvenly']),
     //Show/hide progress circles
     hideProgress: PropTypes.bool,
+    //Modal sizes
+    size: PropTypes.oneOf(['small', 'medium', 'large', 'extraLarge']),
+    //ModalContainer style
+    style: PropTypes.object,
+    //Footer style
+    footerStyle: PropTypes.object,
     //Sets modal to workflow mode
     workflow: PropTypes.bool,
     onClose: (props, propName, componentName) => {

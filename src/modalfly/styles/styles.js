@@ -1,5 +1,5 @@
 /* Modal-Fly Container */
-export const mfContainer = { zIndex: '1000' };
+export const mfContainer = { zIndex: '9999' };
 export const mfOverlay = {
     position: 'fixed',
     top: 0,

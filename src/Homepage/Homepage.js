@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ModalflyContainer, Modalfly, Steps, Step, Footer } from '../modalfly/index';
+import { Modalfly, Steps, Step, Footer } from '../modalfly/index';
 
 export default class Homepage extends Component {
 
@@ -154,12 +154,13 @@ export default class Homepage extends Component {
                 </Modalfly >
 
                 {/* MODAL COMPONENT 2 */}
-                < Modalfly
+                <Modalfly
                     //size='small'
                     title='React-Modal-Fly'
                     show={this.state.showModal2}
                     onClose={this.closeModal2}
                     footerContent='spaceEvenly'
+                    style
                 >
                     <div>
                         <h3 style={{ textAlign: 'center' }}>Single View Modal</h3>
@@ -168,8 +169,20 @@ export default class Homepage extends Component {
                         </p>
                     </div>
                     <Footer >
-                        <button className='btn btn-danger' onClick={this.closeModal2} >Close</button>
-                        <button className='btn btn-primary' onClick={this.closeModal2} >Done</button>
+                        {/* <button className='btn btn-danger' onClick={this.closeModal2} >Close</button>
+                        <button className='btn btn-primary' onClick={this.closeModal2} >Done</button> */}
+                        <div>
+                            <label for="pet-select">Choose a pet:</label>
+                            <select name="pets" id="pet-select">
+                                <option value="">--Please choose an option--</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </div>
                     </Footer>
                 </Modalfly >
 
