@@ -25,7 +25,7 @@ function App() {
 
 React-Modal-Fly has two primary modes, Single View and Workflow.
 
-#### Single View Mode
+### Single View Mode
 Single View Mode displays its contents like a traditional modal. 
 ```jsx
 <Modalfly
@@ -43,7 +43,7 @@ onClose={this.handleClose}
 </Modalfly>
 ```
 
-#### Workflow Mode
+### Workflow Mode
 Workflow Mode accepts multiple `Step` components that can be navigated using a simple function.
 ```jsx
 <Modalfly
@@ -88,11 +88,33 @@ Default value is in **bold**.
 |footerContent | `String` | "left", "center", "**right**", "spaceBetween", "spaceAround", "spaceEvenly"|Controls how the footer content will be aligned. |
 | footerStyle | `Object` | **null** | Inline style object |
 |onClose | `func` | **None** | If an onClose function is not provided, the close icon button is not displayed. |
+|resetSteps| `Boolean` | **`true`**, `false` | If `false`, the current step is not reset to `0` after calling the onClose handler. This is useful for close warnings. *Only applies to `workflow` mode.* |
 |show | `Boolean` | `True`, **`False`** | Controls whether or not the Modal is displayed. |
 |size | `String` | "small", "**medium**", "large", "extraLarge" | The size of the modal.
 |style | `Object` | **null** | Inline style object |
 |title      | `String` | "**Attention**" |Sets the modal title. |
 |workflow | `Boolean` | `True`, **`False`** | Controls whether or not the Modal is in workflow mode. |
+
+#### Closer Look: `onClose`  & `resetSteps` Props 
+The `resetSteps` prop is useful for when you want to execute some custom behavior (close warning) when the close button is clicked *before*  without the current step reset to `0` (first step). View the function logic below for a better understanding. The included demo shows this in action.
+
+`src/modalfly/components/Modalfly/Modalfly.js`
+```js
+const  onCancel  =  ()  => {
+	//Check 'resetSteps' prop, if 'false', do not reset steps.
+	let reset = props.resetSteps ===  undefined  ?  true  : props.resetSteps;
+	//Always reset when in 'single view' mode
+	if (props.workflow ===  undefined) {
+		reset =  true;
+	}
+	//Call client's onClose handler
+	props.onClose();
+	//Reset workflow steps
+	if (reset) {
+		dispatch({ type: actions.RESET });
+	}
+}
+```
 
 #### Step Component Props
 Default value is in **bold**.

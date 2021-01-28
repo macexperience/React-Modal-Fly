@@ -27,7 +27,7 @@ export function Modalfly(props) {
     //Get container and footer styles
     const mfStyle = getContainerStyle(props);
     const footerStyle = getFooterStyle(props);
-    
+
     if (!props.show) {
         return null;
     }
@@ -44,7 +44,7 @@ export function Modalfly(props) {
         const isAnObject = typeof children === 'object' && children !== null;
         const isAnArray = Array.isArray(children);
         if (isAnObject && !isAnArray) {
-            return (<h3 style={{color: "red"}}>'Modalfly' Error: At least two 'Step' components are required for workflow mode.</h3>)
+            return (<h3 style={{ color: "red" }}>'Modalfly' Error: At least two 'Step' components are required for workflow mode.</h3>)
         }
         //Count the current steps
         currentStepCount = children.length;
@@ -95,9 +95,18 @@ export function Modalfly(props) {
     }
 
     const onCancel = () => {
-        dispatch({ type: actions.RESET });
-        //Close modal
+        //Check 'resetSteps' prop, if 'false', do not reset steps.
+        let reset = props.resetSteps === undefined ? true : props.resetSteps;
+        //Always reset when in 'single view' mode
+        if (props.workflow === undefined) {
+            reset = true;
+        }
+        //Call client's onClose handler
         props.onClose();
+        //Reset workflow steps
+        if (reset) {
+            dispatch({ type: actions.RESET });
+        }
     }
 
     const contentArea = () => {
