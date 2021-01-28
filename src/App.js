@@ -7,6 +7,7 @@ class App extends Component {
 		this.state = {
 			showModal1: false,
 			showModal2: false,
+			resetSteps: true,
 			firstName: '',
 			lastName: '',
 			phone: '',
@@ -33,9 +34,14 @@ class App extends Component {
 		});
 	}
 
-	handleComplete = e => {
+	handleComplete = () => {
 		this.setState(prevState => ({ showModal1: !prevState.showModal1 }));
 		Steps.complete();
+	}
+
+	handleResetCheckbox = (e) => {
+		const { target } = e;
+		this.setState({resetSteps: target.checked});
 	}
 
 	render() {
@@ -147,6 +153,7 @@ class App extends Component {
 
 					{/* MODAL COMPONENT 1 */}
 					<Modalfly size='extraLarge' workflow
+						resetSteps={this.state.resetSteps}
 						show={this.state.showModal1} onClose={this.closeModal1}
 					>
 						{steps}
@@ -182,6 +189,19 @@ class App extends Component {
 								<button name='workflowModal' className="btn btn-lg btn-primary" onClick={this.handleShowClick}>
 									Open Workflow Modal
 								</button>
+								<div className="form-group">
+									<div className="checkbox">
+										<input
+											checked={this.state.resetSteps}
+											onChange={this.handleResetCheckbox} 
+											type="checkbox" /> Reset steps after closing modal
+									</div>
+								</div>
+								<strong>Note: </strong>
+								<span>If disabled, steps are not reset when clicking the close button. This allows you to continue with 
+									closing the modal and keep your current step so that if the modal is opened again, the current step is maintained.  
+									One could also implement some effect when clicking the close icon. For example, this could be used to show a warning
+									to the user before closing and reseting.</span>
 							</div>
 							<div className="col-md-6">
 								<button name='singleViewModal' className="btn btn-lg btn-default" onClick={this.handleShowClick}>
