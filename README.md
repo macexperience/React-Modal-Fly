@@ -96,7 +96,7 @@ Default value is in **bold**.
 |workflow | `Boolean` | `True`, **`False`** | Controls whether or not the Modal is in workflow mode. |
 
 #### Closer Look: `onClose`  & `resetSteps` Props 
-The `resetSteps` prop is useful for when you want to execute some custom behavior (close warning) when the close button is clicked *before*  without the current step reset to `0` (first step). View the function logic below for a better understanding. The included demo shows this in action.
+The `resetSteps` prop is useful for when you want to execute some custom behavior (close warning) when the close button is clicked *before*  without the current step reset to `0` (first step). The included demo shows this in action. View the function logic below for a better understanding.
 
 `src/modalfly/components/Modalfly/Modalfly.js`
 ```js
