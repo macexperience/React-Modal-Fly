@@ -25,10 +25,8 @@
 	-webkit-app-region: drag;
 	padding: 20px;
 	border-radius: 5px 5px 0 0;
-	/* display: flex;
-	justify-content: space-between;
-	align-items: center; */
 }
+
 .mac-brushed-metal-footer {
 	/* Gradient and Line */
 	background: linear-gradient(180deg, rgba(232, 230, 232, 1) 0%, rgba(210, 209, 210, 1) 100%) !important;
@@ -37,11 +35,23 @@
 	-webkit-app-region: drag;
 	padding: 20px;
 	/* border-radius: 5px 5px 0 0; */
-	/* display: flex;
-	justify-content: space-between;
-	align-items: center; */
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.header-red {
+	margin: 0;
+	padding: 0;
+	font-size: 1.7em;
+	color: red;
+}
+
+.header-large {
+	margin: 0;
+	padding: 0;
+	font-size: 2.2em;
+	color: rgba(0,0,0,.7);
 }
 
 .mac-close-icon {

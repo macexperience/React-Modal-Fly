@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { ModalflyContainer, Modalfly, Steps, Step, Footer } from './modalfly/index';
+import {
+	ModalflyContainer, Modalfly, Steps,
+	Step, Footer, ModalflyThemeContext
+} from './modalfly/index';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +15,13 @@ class App extends Component {
 			firstName: '',
 			lastName: '',
 			phone: '',
-			address1: ''
+			address1: '',
+			modalFlyTheme: {
+				headerClassName: 'mac-brushed-metal',
+				headerTextClassName: 'header-large',
+				footerClassName: 'mac-brushed-metal-footer',
+				closeBtnClassName: 'mac-close-icon'
+			}
 		};
 	}
 	handleShowClick = e => {
@@ -42,7 +51,7 @@ class App extends Component {
 
 	handleResetCheckbox = (e) => {
 		const { target } = e;
-		this.setState({resetSteps: target.checked});
+		this.setState({ resetSteps: target.checked });
 	}
 
 	render() {
@@ -137,7 +146,7 @@ class App extends Component {
 					<h3>Step 5</h3>
 					<p>When completing the workflow be sure to reset React-Modal-Fly's state by calling <code>Steps.complete()</code>.</p>
 					<p>The complete function can be called in either an external method or inline.</p>
-					<p style={{marginTop: '2em'}}><strong>Inline Method:</strong></p>
+					<p style={{ marginTop: '2em' }}><strong>Inline Method:</strong></p>
 					<code>{`<button onClick={e => { this.handleComplete(); Steps.complete(); }}>Click Me</button>`}</code>
 					<Footer>
 						<button className="btn" type='button' onClick={e => Steps.previous(e)}>Back</button>
@@ -150,72 +159,78 @@ class App extends Component {
 
 		return (
 			<>
-				<div style={{marginTop: '2em'}} className="container">
+				<ModalflyThemeContext.Provider
+					value={this.state.modalFlyTheme}>
+					<div style={{ marginTop: '2em' }} className="container">
 
-					{/* MODAL COMPONENT 1 */}
-					<Modalfly size='extraLarge' workflow
-						resetSteps={this.state.resetSteps}
-						show={this.state.showModal1} onClose={this.closeModal1}
-					>
-						{steps}
-					</Modalfly>
+						{/* MODAL COMPONENT 1 */}
+						<Modalfly size='extraLarge' workflow
+							resetSteps={this.state.resetSteps}
+							show={this.state.showModal1} onClose={this.closeModal1}
+						>
+							{steps}
+						</Modalfly>
 
-					{/* MODAL COMPONENT 2 */}
-					<Modalfly
-						title='React-Modal-Fly'
-						show={this.state.showModal2}
-						onClose={this.closeModal2}
-						footerContent='spaceEvenly'
-						closeBtnClassName='mac-close-icon'
-						footerClassName='mac-brushed-metal-footer'
-						headerClassName='mac-brushed-metal'
-					>
-						<div>
-							<h3 style={{textAlign: 'center'}}>Single View Modal</h3>
-							<p>
-								This is a single view modal.
+						{/* MODAL COMPONENT 2 */}
+						<Modalfly
+							title='React-Modal-Fly'
+							show={this.state.showModal2}
+							onClose={this.closeModal2}
+							footerContent='spaceEvenly'
+							useDefaultStyle
+							//closeBtnClassName='mac-close-icon'
+							//footerClassName='mac-brushed-metal-footer'
+							//headerClassName='mac-brushed-metal'
+							//headerClassName='mac-brushed-metal'
+							//headerTextClassName='header-large'
+						>
+							<div>
+								<h3 style={{ textAlign: 'center' }}>Single View Modal</h3>
+								<p>
+									This is a single view modal.
 							</p>
-						</div>
-						<Footer>
-							<button className='btn btn-danger' onClick={this.closeModal2} >Close</button>
-							<button className='btn btn-primary' onClick={this.closeModal2} >Done</button>
-						</Footer>
-					</Modalfly>
+							</div>
+							<Footer>
+								<button className='btn btn-danger' onClick={this.closeModal2} >Close</button>
+								<button className='btn btn-primary' onClick={this.closeModal2} >Done</button>
+							</Footer>
+						</Modalfly>
 
 
-					<div className="jumbotron">
-						<h1>React-Modal-Fly <span style={{ color: 'grey' }}>Demo</span></h1>
-						<p className="lead">A Weevio Modal Component.</p>
+						<div className="jumbotron">
+							<h1>React-Modal-Fly <span style={{ color: 'grey' }}>Demo</span></h1>
+							<p className="lead">A Weevio Modal Component.</p>
 
-						<div style={{marginTop: '100px'}} className="row text-center">
-							<div className="col-md-6">
-								<button name='workflowModal' className="btn btn-lg btn-primary" onClick={this.handleShowClick}>
-									Open Workflow Modal
+							<div style={{ marginTop: '100px' }} className="row text-center">
+								<div className="col-md-6">
+									<button name='workflowModal' className="btn btn-lg btn-primary" onClick={this.handleShowClick}>
+										Open Workflow Modal
 								</button>
-								<div className="form-group">
-									<div className="checkbox">
-										<input
-											checked={this.state.resetSteps}
-											onChange={this.handleResetCheckbox} 
-											type="checkbox" /> Reset steps after closing modal
+									<div className="form-group">
+										<div className="checkbox">
+											<input
+												checked={this.state.resetSteps}
+												onChange={this.handleResetCheckbox}
+												type="checkbox" /> Reset steps after closing modal
 									</div>
-								</div>
-								<strong>Note: </strong>
-								<span>If disabled, steps are not reset when clicking the close button. This allows you to continue with 
-									closing the modal and keep your current step so that if the modal is opened again, the current step is maintained.  
+									</div>
+									<strong>Note: </strong>
+									<span>If disabled, steps are not reset when clicking the close button. This allows you to continue with
+									closing the modal and keep your current step so that if the modal is opened again, the current step is maintained.
 									One could also implement some effect when clicking the close icon. For example, this could be used to show a warning
 									to the user before closing and reseting.</span>
-							</div>
-							<div className="col-md-6">
-								<button name='singleViewModal' className="btn btn-lg btn-default" onClick={this.handleShowClick}>
-									Open Single View Modal
+								</div>
+								<div className="col-md-6">
+									<button name='singleViewModal' className="btn btn-lg btn-default" onClick={this.handleShowClick}>
+										Open Single View Modal
 								</button>
+								</div>
 							</div>
 						</div>
-					</div>
 
-				</div>
-				<ModalflyContainer />
+					</div>
+					<ModalflyContainer />
+				</ModalflyThemeContext.Provider>
 			</>
 		);
 	}

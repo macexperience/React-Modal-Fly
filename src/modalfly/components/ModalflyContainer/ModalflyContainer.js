@@ -12,7 +12,7 @@ export function ModalflyContainer(props) {
         } else {
             setShowOverlay(false);
         }
-    });
+    }, []);
     //Create overlay div
     const overlay = (<div id='modalfly-overlay' style={styles.mfOverlay}></div>);
 

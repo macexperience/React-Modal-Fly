@@ -47,8 +47,6 @@ export const headerArea = {
     gridRow: '1/2',
     background: '#ebebeb',
     borderRadius: '5px 5px 0 0',
-    // paddingLeft: '20px',
-    // paddingRight: '20px',
     padding: '20px',
     display: 'flex',
     justifyContent: 'space-between',

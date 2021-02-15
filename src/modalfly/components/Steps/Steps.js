@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
-import StepContext from '../../hooks/StepContext';
-import * as types from '../../hooks/actions';
+import StepContext from '../../context/StepContext';
+import * as types from '../../reducer/actions';
 
 export function Steps(props) {
     const stepContext = useContext(StepContext);

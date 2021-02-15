@@ -1,12 +1,13 @@
-import React, { useReducer, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { reducer, initialState } from '../../hooks/reducer';
-import * as actions from '../../hooks/actions';
-import StepContext from '../../hooks/StepContext';
+import { reducer, initialState } from '../../reducer/reducer';
+import * as actions from '../../reducer/actions';
+import StepContext from '../../context/StepContext';
 import { Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import { isFunction, getContainerStyle, getHeaderStyle, getFooterStyle } from '../../helpers/helpers'
+import { isFunction, getContainerStyle, getHeaderTextStyle, getHeaderStyle, getFooterStyle } from '../../helpers/helpers'
 import * as styles from '../../styles/styles';
+import { ModalflyThemeContext } from '../../context/ModalyflyThemeContext';
 
 export function Modalfly(props) {
     //Create reducer
@@ -24,10 +25,13 @@ export function Modalfly(props) {
         }
     }, [props.show]);
 
-    //Get container and footer styles
+    const classNamesContext = useContext(ModalflyThemeContext);
+
+    //Get container, header, header text, footer minimum required styles
     const mfStyle = getContainerStyle(props);
-    const headerStyle = getHeaderStyle(props);
-    const footerStyle = getFooterStyle(props);
+    const headerStyle = getHeaderStyle(props, classNamesContext);
+    const footerStyle = getFooterStyle(props, classNamesContext);
+    const headerTextStyle = getHeaderTextStyle(props, classNamesContext);
 
     if (!props.show) {
         return null;
@@ -62,8 +66,9 @@ export function Modalfly(props) {
 
     const closeIcon = () => {
         if (displayCloseIcon) {
-            if (props.closeBtnClassName) {
-                return (<i onClick={onCancel} className={props.closeBtnClassName ? props.closeBtnClassName : ''}></i>);
+            if (!props.useDefaultStyle && (props.closeBtnClassName || classNamesContext.closeBtnClassName)) {
+                console.log('close icon... theme found..')
+                return (<i onClick={onCancel} className={props.closeBtnClassName || classNamesContext.closeBtnClassName || ''}></i>);
             }
             return (<i onClick={onCancel} style={styles.closeIcon}>&times;</i>);
         } else {
@@ -135,9 +140,12 @@ export function Modalfly(props) {
                             <div id='mf-wrapper' style={{ ...mfStyle, ...styles.mfTransitionStyles[state] }}>
                                 {/* Header div */}
                                 <div
-                                    className={props.headerClassName ? props.headerClassName : ''}
+                                    className={props.useDefaultStyle ? '' : (props.headerClassName || classNamesContext.headerClassName || '')}
                                     style={headerStyle}>
-                                    <h3 style={styles.headerH3}>
+                                    {/* <h3  style={styles.headerH3}> */}
+                                    <h3 
+                                        className={props.useDefaultStyle ? '' : (props.headerTextClassName || classNamesContext.headerTextClassName || '')} 
+                                        style={headerTextStyle}>
                                         {titlesGenerator()}
                                     </h3>
                                     {closeIcon()}
@@ -153,7 +161,7 @@ export function Modalfly(props) {
                                 <div
                                     id='mf-footer'
                                     style={footerStyle}
-                                    className={props.footerClassName ? `mf-footer-area ${props.footerClassName}` : 'mf-footer-area'}></div>
+                                    className={props.useDefaultStyle ? 'mf-footer-area' : `mf-footer-area ${props.footerClassName || ''} ${classNamesContext.footerClassName || ''}`}></div>
                             </div>
                         )
                     }
@@ -195,6 +203,8 @@ Modalfly.propTypes = {
     footerStyle: PropTypes.object,
     //Header class name
     headerClassName: PropTypes.string,
+    //H3 class name
+    headerTextClassName: PropTypes.string,
     //Footer class name
     footerClassName: PropTypes.string,
     //Close button class name
