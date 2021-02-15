@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { ModalflyContainer, Modalfly, Steps, Step, Footer } from './modalfly/index';
+import './App.css';
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
 			showModal1: false,
-			showModal2: false,
+			showModal2: true,
 			resetSteps: true,
 			firstName: '',
 			lastName: '',
@@ -161,11 +162,12 @@ class App extends Component {
 
 					{/* MODAL COMPONENT 2 */}
 					<Modalfly
-						//size='small'
 						title='React-Modal-Fly'
 						show={this.state.showModal2}
 						onClose={this.closeModal2}
 						footerContent='spaceEvenly'
+						closeBtnClassName='mac-close-icon'
+						headerClassName='mac-brushed-metal'
 					>
 						<div>
 							<h3 style={{textAlign: 'center'}}>Single View Modal</h3>

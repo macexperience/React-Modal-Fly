@@ -47,7 +47,12 @@ export const headerArea = {
     gridRow: '1/2',
     background: '#ebebeb',
     borderRadius: '5px 5px 0 0',
-    padding: '20px'
+    // paddingLeft: '20px',
+    // paddingRight: '20px',
+    padding: '20px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
 };
 
 export const headerH3 = {
@@ -112,14 +117,27 @@ export const footerSpaceEvenly = { justifyContent: 'space-evenly' };
 
 /* Close Modal Icon */
 export const closeIcon = {
-    gridColumn: '3/4',
-    gridRow: '1/2',
-    textAlign: 'center',
-    lineHeight: '68px',
     color: '#aaa',
     fontSize: '26px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    paddingBottom: '10px'
 };
+
+export const macIcon = {
+    top: '6px',
+    left: '6px',
+    height: '12.5px',
+    width: '12.5px',
+    backgroundColor: '#FD615C',
+    outline: 'none',
+    position: 'absolute',
+    boxSizing: 'border-box',
+    border: '1px solid #DF3E3A',
+    borderRadius: '100%',
+    padding: '0',
+    cursor: 'default'
+};
+
 export const closeIconHover = {
     color: '#606870',
     textDecoration: 'none',
