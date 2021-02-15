@@ -29,6 +29,20 @@
 	justify-content: space-between;
 	align-items: center; */
 }
+.mac-brushed-metal-footer {
+	/* Gradient and Line */
+	background: linear-gradient(180deg, rgba(232, 230, 232, 1) 0%, rgba(210, 209, 210, 1) 100%) !important;
+	/* Electron Draggable */
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+	padding: 20px;
+	/* border-radius: 5px 5px 0 0; */
+	/* display: flex;
+	justify-content: space-between;
+	align-items: center; */
+	display: flex;
+	justify-content: space-around;
+}
 
 .mac-close-icon {
 	top: 6px;

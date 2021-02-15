@@ -167,6 +167,7 @@ class App extends Component {
 						onClose={this.closeModal2}
 						footerContent='spaceEvenly'
 						closeBtnClassName='mac-close-icon'
+						footerClassName='mac-brushed-metal-footer'
 						headerClassName='mac-brushed-metal'
 					>
 						<div>
@@ -175,7 +176,7 @@ class App extends Component {
 								This is a single view modal.
 							</p>
 						</div>
-						<Footer >
+						<Footer>
 							<button className='btn btn-danger' onClick={this.closeModal2} >Close</button>
 							<button className='btn btn-primary' onClick={this.closeModal2} >Done</button>
 						</Footer>

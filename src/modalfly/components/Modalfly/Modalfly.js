@@ -5,7 +5,7 @@ import * as actions from '../../hooks/actions';
 import StepContext from '../../hooks/StepContext';
 import { Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import { isFunction, getCloseBtnStyle, getContainerStyle, getHeaderStyle, getFooterStyle } from '../../helpers/helpers'
+import { isFunction, getContainerStyle, getHeaderStyle, getFooterStyle } from '../../helpers/helpers'
 import * as styles from '../../styles/styles';
 
 export function Modalfly(props) {
@@ -28,8 +28,6 @@ export function Modalfly(props) {
     const mfStyle = getContainerStyle(props);
     const headerStyle = getHeaderStyle(props);
     const footerStyle = getFooterStyle(props);
-
-    console.log('\n\nheader style:', headerStyle)
 
     if (!props.show) {
         return null;
@@ -134,14 +132,8 @@ export function Modalfly(props) {
                 >
                     {
                         state => (
-                            <div id='mf-wrapper'
-                                style={{
-                                    ...mfStyle,
-                                    ...styles.mfTransitionStyles[state]
-                                }}>
-
-                                {/* <div style={styles.headerArea}> */}
-                                {/* <div className='mac-brushed-metal' style={{gridColumn: '1/4', gridRow: '1/2'}}> */}
+                            <div id='mf-wrapper' style={{ ...mfStyle, ...styles.mfTransitionStyles[state] }}>
+                                {/* Header div */}
                                 <div
                                     className={props.headerClassName ? props.headerClassName : ''}
                                     style={headerStyle}>
@@ -150,17 +142,17 @@ export function Modalfly(props) {
                                     </h3>
                                     {closeIcon()}
                                 </div>
-                                {/* {closeIcon()} */}
-
+                                {/* Main Content div */}
                                 {contentArea()}
 
+                                {/* Progress circles div */}
                                 <div style={styles.progressArea}>
                                     {progressCircles()}
                                 </div>
-
-                                <div 
-                                    id='mf-footer' 
-                                    style={footerStyle} 
+                                {/* Footer div */}
+                                <div
+                                    id='mf-footer'
+                                    style={footerStyle}
                                     className={props.footerClassName ? `mf-footer-area ${props.footerClassName}` : 'mf-footer-area'}></div>
                             </div>
                         )
@@ -183,7 +175,6 @@ Modalfly.propTypes = {
     children: (props, propName, componentName) => {
         let error;
         const prop = props[propName];
-        // console.log('React.Children.count:', React.Children.toArray())
         React.Children.forEach(prop, (child) => {
             //If in 'workflow' mode, only allow child of Steps
             if (props.workflow && child.type.name !== 'Steps') {
