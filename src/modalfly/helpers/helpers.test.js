@@ -45,61 +45,116 @@ describe('helpers', () => {
         });
         it(`returns styles object for 'small' size prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getContainerStyle({size: 'small'});
+            const stylesObj = helpers.getContainerStyle({ size: 'small' });
             expect(stylesObj.width).toEqual('300px');
         });
         it(`returns styles object for 'medium' size prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getContainerStyle({size: 'medium'});
+            const stylesObj = helpers.getContainerStyle({ size: 'medium' });
             expect(stylesObj.width).toEqual('500px');
         });
         it(`returns styles object for 'large' size prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getContainerStyle({size: 'large'});
+            const stylesObj = helpers.getContainerStyle({ size: 'large' });
             expect(stylesObj.width).toEqual('800px');
         });
         it(`returns styles object for 'large' size prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getContainerStyle({size: 'extraLarge'});
+            const stylesObj = helpers.getContainerStyle({ size: 'extraLarge' });
             expect(stylesObj.width).toEqual('1140px');
         });
     });
 
+    describe('getHeaderStyle()', () => {
+        it(`returns default styles if 'useDefaultStyle' prop is provided with theme context`, () => {
+            expect.assertions(4);
+            const stylesObj = helpers.getHeaderStyle({ useDefaultStyle: true }, { headerClassName: 'mac-brushed-metal' });
+            expect(stylesObj.background).toEqual('#ebebeb');
+            expect(stylesObj.padding).toEqual('20px');
+            expect(stylesObj.borderRadius).toEqual('5px 5px 0 0');
+            expect(Object.keys(stylesObj).length).toEqual(8);
+        });
+        it(`returns minimum required styles if a theme context is provided`, () => {
+            expect.assertions(3);
+            const stylesObj = helpers.getHeaderStyle({}, { headerClassName: 'mac-brushed-metal' });
+            expect(stylesObj.gridColumn).toEqual('1/4');
+            expect(stylesObj.gridRow).toEqual('1/2');
+            expect(Object.keys(stylesObj).length).toEqual(2);
+        });
+        it(`returns minimum required styles if the 'headerClassName' prop is provided`, () => {
+            expect.assertions(3);
+            const stylesObj = helpers.getHeaderStyle({ headerClassName: 'mac-brushed-metal' }, {});
+            expect(stylesObj.gridColumn).toEqual('1/4');
+            expect(stylesObj.gridRow).toEqual('1/2');
+            expect(Object.keys(stylesObj).length).toEqual(2);
+        });
+        it(`returns default styles when no class name prop and theme context is provided`, () => {
+            expect.assertions(3);
+            const stylesObj = helpers.getHeaderStyle({}, {});
+            expect(stylesObj.gridColumn).toEqual('1/4');
+            expect(stylesObj.gridRow).toEqual('1/2');
+            expect(Object.keys(stylesObj).length).toEqual(8);
+        });
+    });
+
+    describe('getHeaderTextStyle', () => {
+        it(`returns default styles if 'useDefaultStyle' prop is provided with theme context`, () => {
+            expect.assertions(5);
+            const stylesObj = helpers.getHeaderTextStyle({ useDefaultStyle: true }, { headerClassName: 'mac-brushed-metal' });
+            expect(stylesObj.margin).toEqual(0);
+            expect(stylesObj.padding).toEqual(0);
+            expect(stylesObj.fontSize).toEqual('1.7em');
+            expect(stylesObj.color).toEqual('rgba(0,0,0,.7)');
+            expect(Object.keys(stylesObj).length).toEqual(4);
+        });
+        it(`returns no styles if the 'headerTextClassName' prop is provided`, () => {
+            expect.assertions(1);
+            const stylesObj = helpers.getHeaderTextStyle({ headerTextClassName: 'header-large' }, {});
+            expect(Object.keys(stylesObj).length).toEqual(0);
+        });
+        it(`returns no styles if the a theme context is provided`, () => {
+            expect.assertions(1);
+            const stylesObj = helpers.getHeaderTextStyle({}, { headerTextClassName: 'header-large' });
+            expect(Object.keys(stylesObj).length).toEqual(0);
+        });
+    })
+
+
     describe('getFooterStyle()', () => {
         it(`returns default styles when no footerContent prop is provided`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getFooterStyle({});
+            const stylesObj = helpers.getFooterStyle({}, {});
             expect(stylesObj.justifyContent).toEqual('flex-end');
         });
         it(`returns styles object for 'left' footerContent prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getFooterStyle({footerContent: 'left'});
+            const stylesObj = helpers.getFooterStyle({ footerContent: 'left' }, {});
             expect(stylesObj.justifyContent).toEqual('flex-start');
         });
         it(`returns styles object for 'center' footerContent prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getFooterStyle({footerContent: 'center'});
+            const stylesObj = helpers.getFooterStyle({ footerContent: 'center' }, {});
             expect(stylesObj.justifyContent).toEqual('center');
         });
         it(`returns styles object for 'right' footerContent prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getFooterStyle({footerContent: 'right'});
+            const stylesObj = helpers.getFooterStyle({ footerContent: 'right' }, {});
             expect(stylesObj.justifyContent).toEqual('flex-end');
         });
         it(`returns styles object for 'spaceBetween' footerContent prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getFooterStyle({footerContent: 'spaceBetween'});
+            const stylesObj = helpers.getFooterStyle({ footerContent: 'spaceBetween' }, {});
             expect(stylesObj.justifyContent).toEqual('space-between');
         });
         it(`returns styles object for 'spaceAround' footerContent prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getFooterStyle({footerContent: 'spaceAround'});
+            const stylesObj = helpers.getFooterStyle({ footerContent: 'spaceAround' }, {});
             expect(stylesObj.justifyContent).toEqual('space-around');
         });
         it(`returns styles object for 'spaceEvenly' footerContent prop`, () => {
             expect.assertions(1);
-            const stylesObj = helpers.getFooterStyle({footerContent: 'spaceEvenly'});
-            expect(stylesObj.justifyContent).toEqual('space-evenly'); 
+            const stylesObj = helpers.getFooterStyle({ footerContent: 'spaceEvenly' }, {});
+            expect(stylesObj.justifyContent).toEqual('space-evenly');
         });
     });
 });

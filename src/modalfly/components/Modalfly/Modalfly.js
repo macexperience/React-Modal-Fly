@@ -67,7 +67,6 @@ export function Modalfly(props) {
     const closeIcon = () => {
         if (displayCloseIcon) {
             if (!props.useDefaultStyle && (props.closeBtnClassName || classNamesContext.closeBtnClassName)) {
-                console.log('close icon... theme found..')
                 return (<i onClick={onCancel} className={props.closeBtnClassName || classNamesContext.closeBtnClassName || ''}></i>);
             }
             return (<i onClick={onCancel} style={styles.closeIcon}>&times;</i>);
@@ -142,8 +141,7 @@ export function Modalfly(props) {
                                 <div
                                     className={props.useDefaultStyle ? '' : (props.headerClassName || classNamesContext.headerClassName || '')}
                                     style={headerStyle}>
-                                    {/* <h3  style={styles.headerH3}> */}
-                                    <h3 
+                                    <h3
                                         className={props.useDefaultStyle ? '' : (props.headerTextClassName || classNamesContext.headerTextClassName || '')} 
                                         style={headerTextStyle}>
                                         {titlesGenerator()}

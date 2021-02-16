@@ -34,7 +34,6 @@
 	-webkit-user-select: none;
 	-webkit-app-region: drag;
 	padding: 20px;
-	/* border-radius: 5px 5px 0 0; */
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;

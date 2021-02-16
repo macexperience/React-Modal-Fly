@@ -10,7 +10,7 @@ class App extends Component {
 		super();
 		this.state = {
 			showModal1: false,
-			showModal2: true,
+			showModal2: false,
 			resetSteps: true,
 			firstName: '',
 			lastName: '',
@@ -178,17 +178,13 @@ class App extends Component {
 							onClose={this.closeModal2}
 							footerContent='spaceEvenly'
 							useDefaultStyle
-							//closeBtnClassName='mac-close-icon'
-							//footerClassName='mac-brushed-metal-footer'
-							//headerClassName='mac-brushed-metal'
-							//headerClassName='mac-brushed-metal'
-							//headerTextClassName='header-large'
 						>
 							<div>
 								<h3 style={{ textAlign: 'center' }}>Single View Modal</h3>
 								<p>
-									This is a single view modal.
-							</p>
+									This is a single view modal using the <code>useDefaultStyle</code>
+									prop to override theme context being consumed by the Workflow Modal.
+								</p>
 							</div>
 							<Footer>
 								<button className='btn btn-danger' onClick={this.closeModal2} >Close</button>
@@ -205,14 +201,15 @@ class App extends Component {
 								<div className="col-md-6">
 									<button name='workflowModal' className="btn btn-lg btn-primary" onClick={this.handleShowClick}>
 										Open Workflow Modal
-								</button>
+									</button>
 									<div className="form-group">
 										<div className="checkbox">
 											<input
 												checked={this.state.resetSteps}
 												onChange={this.handleResetCheckbox}
 												type="checkbox" /> Reset steps after closing modal
-									</div>
+										</div>
+										<div>This Modalfly component is consuming a theme context.</div>
 									</div>
 									<strong>Note: </strong>
 									<span>If disabled, steps are not reset when clicking the close button. This allows you to continue with
@@ -223,7 +220,12 @@ class App extends Component {
 								<div className="col-md-6">
 									<button name='singleViewModal' className="btn btn-lg btn-default" onClick={this.handleShowClick}>
 										Open Single View Modal
-								</button>
+									</button>
+
+									<div style={{ paddingTop: '15px' }}>
+										This Modalfly component component is also consuming
+										a theme context but is opting out with the <code>useDefaultStyle</code> prop.
+									</div>
 								</div>
 							</div>
 						</div>
