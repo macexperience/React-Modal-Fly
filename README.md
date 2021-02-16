@@ -91,6 +91,7 @@ Default value is in **bold**.
 |footerClassName | `String` | **None** | Override the footer default style with custom styling. |
 |footerContent | `String` | "left", "center", "**right**", "spaceBetween", "spaceAround", "spaceEvenly"|Controls how the footer content will be aligned. |
 | footerStyle | `Object` | **null** | Inline style object |
+|useDefaultStyle| `Boolean`| **None** | Bypass any theme context and class name prop and utilize default style. |
 |onClose | `func` | **None** | If an onClose function is not provided, the close icon button is not displayed. |
 |resetSteps| `Boolean` | **`true`**, `false` | If `false`, the current step is not reset to `0` after calling the onClose handler. This is useful for close warnings. *Only applies to `workflow` mode.* |
 |show | `Boolean` | `True`, **`False`** | Controls whether or not the Modal is displayed. |
