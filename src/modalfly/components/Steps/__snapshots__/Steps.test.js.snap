@@ -29,7 +29,7 @@ exports[`<Steps /> renders and mounts with all children 1`] = `
       "maxWidth": "100%",
       "minHeight": "35%",
       "opacity": 0,
-      "overflowX": "hidden",
+      "overflow": "visible",
       "position": "fixed",
       "top": "40%",
       "transform": "translate(-50%, -50%)",
@@ -39,17 +39,22 @@ exports[`<Steps /> renders and mounts with all children 1`] = `
   }
 >
   <div
+    className=""
     style={
       Object {
+        "alignItems": "center",
         "background": "#ebebeb",
         "borderRadius": "5px 5px 0 0",
+        "display": "flex",
         "gridColumn": "1/4",
         "gridRow": "1/2",
+        "justifyContent": "space-between",
         "padding": "20px",
       }
     }
   >
     <h3
+      className=""
       style={
         Object {
           "color": "rgba(0,0,0,.7)",
@@ -101,7 +106,7 @@ exports[`<Steps /> renders and mounts with all children 1`] = `
     />
   </div>
   <div
-    className="mf-footer-area"
+    className="mf-footer-area  "
     id="mf-footer"
     style={
       Object {

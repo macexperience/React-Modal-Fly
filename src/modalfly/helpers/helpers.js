@@ -37,13 +37,60 @@ export function getContainerStyle(props) {
     return mfStyle;
 }
 
-/** Generates the footer container style object
+/** Generates the header container style object
+ * @version 1.1
+ * @param {Object} props - Props object
+ * @param {Object} context - ModalflyThemeContext
+ * @returns {Object} The header container styles object
+ */
+export function getHeaderStyle(props, context) {
+    //Ignore props and context, use default style
+    if (props.useDefaultStyle) return styles.headerArea;
+
+    //If a header style has been provided,
+    //only set the header placement on the grid
+    if (props.headerClassName || context.headerClassName) {
+        //Set minimum style requirement
+        return {
+            gridColumn: '1/4',
+            gridRow: '1/2'
+        };
+    }
+    return styles.headerArea;
+}
+
+/** Generates the h3 style object
  * @version 1.0
+ * @param {Object} props - Props object
+ * @param {Object} context - ModalflyThemeContext
+ * @returns {Object} h3 styles object
+ */
+export function getHeaderTextStyle(props, context) {
+    //Ignore props and context, use default style
+    if (props.useDefaultStyle) return styles.headerH3;
+
+    if (props.headerTextClassName || context.headerTextClassName) {
+        return {};
+    }
+    return styles.headerH3;
+}
+
+/** Generates the footer container style object
+ * @version 1.2
  * @param {Object} props - Props object
  * @param {String} props.footerContent - Specify how the footer area will arrange its contents (flexbox's 'justifyContent')
  * @returns {Object} The footer container styles object
  */
-export function getFooterStyle(props) {
+export function getFooterStyle(props, context) {
+    //If a footer class name has been provided,
+    //only set the footer placement on the grid
+    if (!props.useDefaultStyle && (props.footerClassName || context.footerClassName)) {
+        //Set minimum style requirement
+        return {
+            gridColumn: '1/4',
+            gridRow: '4/5'
+        };
+    }
     let footerStyle = styles.footerArea;
     //Check for additional inline styles
     if (props.footerStyle) {

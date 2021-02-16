@@ -1,18 +1,69 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
+}
+
+.mac-brushed-metal {
+	/* Gradient and Line */
+	background: linear-gradient(180deg, rgba(232, 230, 232, 1) 0%, rgba(210, 209, 210, 1) 100%) !important;
+	/* Electron Draggable */
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+	padding: 20px;
+	border-radius: 5px 5px 0 0;
+}
+
+.mac-brushed-metal-footer {
+	/* Gradient and Line */
+	background: linear-gradient(180deg, rgba(232, 230, 232, 1) 0%, rgba(210, 209, 210, 1) 100%) !important;
+	/* Electron Draggable */
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+	padding: 20px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.header-red {
+	margin: 0;
+	padding: 0;
+	font-size: 1.7em;
+	color: red;
+}
+
+.header-large {
+	margin: 0;
+	padding: 0;
+	font-size: 2.2em;
+	color: rgba(0,0,0,.7);
+}
+
+.mac-close-icon {
+	top: 6px;
+	left: 6px;
+	height: 12.5px;
+	width: 12.5px;
+	background-color: #FD615C;
+	outline: none;
+	position: absolute;
+	box-sizing: border-box;
+	border: 1px solid #DF3E3A;
+	border-radius: 100%;
+	padding: 0;
+	cursor: default;
 }

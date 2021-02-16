@@ -1,12 +1,13 @@
-import React, { useReducer, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { reducer, initialState } from '../../hooks/reducer';
-import * as actions from '../../hooks/actions';
-import StepContext from '../../hooks/StepContext';
+import { reducer, initialState } from '../../reducer/reducer';
+import * as actions from '../../reducer/actions';
+import StepContext from '../../context/StepContext';
 import { Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import { isFunction, getContainerStyle, getFooterStyle } from '../../helpers/helpers'
+import { isFunction, getContainerStyle, getHeaderTextStyle, getHeaderStyle, getFooterStyle } from '../../helpers/helpers'
 import * as styles from '../../styles/styles';
+import { ModalflyThemeContext } from '../../context/ModalyflyThemeContext';
 
 export function Modalfly(props) {
     //Create reducer
@@ -24,9 +25,13 @@ export function Modalfly(props) {
         }
     }, [props.show]);
 
-    //Get container and footer styles
+    const classNamesContext = useContext(ModalflyThemeContext);
+
+    //Get container, header, header text, footer minimum required styles
     const mfStyle = getContainerStyle(props);
-    const footerStyle = getFooterStyle(props);
+    const headerStyle = getHeaderStyle(props, classNamesContext);
+    const footerStyle = getFooterStyle(props, classNamesContext);
+    const headerTextStyle = getHeaderTextStyle(props, classNamesContext);
 
     if (!props.show) {
         return null;
@@ -61,7 +66,10 @@ export function Modalfly(props) {
 
     const closeIcon = () => {
         if (displayCloseIcon) {
-            return (<span onClick={onCancel} style={styles.closeIcon}>&times;</span>);
+            if (!props.useDefaultStyle && (props.closeBtnClassName || classNamesContext.closeBtnClassName)) {
+                return (<i onClick={onCancel} className={props.closeBtnClassName || classNamesContext.closeBtnClassName || ''}></i>);
+            }
+            return (<i onClick={onCancel} style={styles.closeIcon}>&times;</i>);
         } else {
             return null;
         }
@@ -128,26 +136,30 @@ export function Modalfly(props) {
                 >
                     {
                         state => (
-                            <div id='mf-wrapper' style={{
-                                ...mfStyle,
-                                ...styles.mfTransitionStyles[state]
-                            }}>
-
-                                <div style={styles.headerArea}>
-                                    <h3 style={styles.headerH3}>
+                            <div id='mf-wrapper' style={{ ...mfStyle, ...styles.mfTransitionStyles[state] }}>
+                                {/* Header div */}
+                                <div
+                                    className={props.useDefaultStyle ? '' : (props.headerClassName || classNamesContext.headerClassName || '')}
+                                    style={headerStyle}>
+                                    <h3
+                                        className={props.useDefaultStyle ? '' : (props.headerTextClassName || classNamesContext.headerTextClassName || '')} 
+                                        style={headerTextStyle}>
                                         {titlesGenerator()}
                                     </h3>
+                                    {closeIcon()}
                                 </div>
-
-                                {closeIcon()}
-
+                                {/* Main Content div */}
                                 {contentArea()}
 
+                                {/* Progress circles div */}
                                 <div style={styles.progressArea}>
                                     {progressCircles()}
                                 </div>
-
-                                <div id='mf-footer' style={footerStyle} className='mf-footer-area'></div>
+                                {/* Footer div */}
+                                <div
+                                    id='mf-footer'
+                                    style={footerStyle}
+                                    className={props.useDefaultStyle ? 'mf-footer-area' : `mf-footer-area ${props.footerClassName || ''} ${classNamesContext.footerClassName || ''}`}></div>
                             </div>
                         )
                     }
@@ -169,7 +181,6 @@ Modalfly.propTypes = {
     children: (props, propName, componentName) => {
         let error;
         const prop = props[propName];
-        // console.log('React.Children.count:', React.Children.toArray())
         React.Children.forEach(prop, (child) => {
             //If in 'workflow' mode, only allow child of Steps
             if (props.workflow && child.type.name !== 'Steps') {
@@ -188,6 +199,14 @@ Modalfly.propTypes = {
     style: PropTypes.object,
     //Footer style
     footerStyle: PropTypes.object,
+    //Header class name
+    headerClassName: PropTypes.string,
+    //H3 class name
+    headerTextClassName: PropTypes.string,
+    //Footer class name
+    footerClassName: PropTypes.string,
+    //Close button class name
+    closeBtnClassName: PropTypes.string,
     //Sets modal to workflow mode
     workflow: PropTypes.bool,
     onClose: (props, propName, componentName) => {
